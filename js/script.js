@@ -35,9 +35,23 @@ const teamMembers = [
     },
 ];
 
-for (let member of teamMembers) {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `<div class="name">${member.fullName}</div> <div class="role">${member.role}</div> <img src="img/${member.photo}">`;
-    teamContainer.appendChild(card);
+createCard(teamMembers, teamContainer);
+
+
+
+// FUNCTIONS DEFINITION
+function createCard(team, container) {
+    for (let member of team) {
+        container.innerHTML += addInfo(member);
+    }
+}
+
+function addInfo(member) {
+return `
+<div class="card">
+    <div class="name">${member.fullName}</div>
+    <div class="role">${member.role}</div>
+    <img src="img/${member.photo}" alt="Photo of ${member.fullName}">
+</div>
+`;
 }
